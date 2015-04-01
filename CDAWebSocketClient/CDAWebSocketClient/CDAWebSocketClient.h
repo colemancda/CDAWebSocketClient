@@ -8,7 +8,11 @@
 
 #import <ObjFW/ObjFW.h>
 #import <CDAFoundation/CDAFoundation.h>
+#import <dispatch/dispatch.h>
 
+@protocol CDAWebSocketClientDelegate;
+
+/** The state of the WebSocket client connection. */
 typedef enum {
     
     CDAWebSocketClientStateOpen,
@@ -31,6 +35,9 @@ typedef enum {
 
 #pragma mark - Properties
 
+/** The delegate for the WebSocket. */
+@property id<CDAWebSocketClientDelegate> delegate;
+
 /** The URL of the WebSockets server. */
 @property (readonly) OFURL *url;
 
@@ -39,5 +46,32 @@ typedef enum {
 
 /** The state of the WebSocket's connection. Not KVO-compliant. */
 @property (readonly) CDAWebSocketClientState state;
+
+#pragma mark - Methods
+
+/** Sends a string message to the server. */
+-(void)sendMessage:(OFString *)message;
+
+/** Sends data to the server. */
+// TODO: -(void)sendData:(OFDataArray *)data;
+
+/** Sends a string as binary data to the server. */
+-(void)sendDataString:(OFString *)dataString;
+
+/** Sends a ping to the server. */
+-(void)sendPing;
+
+/** Closes the connection with the server. */
+-(void)close;
+
+@end
+
+#pragma mark - Protocol
+
+@protocol CDAWebSocketClientDelegate <OFObject>
+
+-(void)webSocket:(CDAWebSocketClient *)webSocket didRecieveMessage:(OFString *)message;
+
+// TODO: -(void)webSocket:(CDAWebSocketClient *)webSocket didRecieveData:(OFDataArray *)data;
 
 @end

@@ -15,6 +15,8 @@
 
 @property easywsclient::WebSocket::pointer internalWebSocketClient;
 
+@property dispatch_queue_t connectionQueue;
+
 // Mutable Properties
 
 @property OFURL *url;
@@ -62,6 +64,22 @@
             self.internalWebSocketClient = easywsclient::WebSocket::from_url_no_mask(urlString.UTF8String);
         }
         
+        self.connectionQueue = dispatch_queue_create("CDAWebSocketClient Connection Queue", NULL);
+        
+        // start polling
+        
+        dispatch_async(self.connectionQueue, ^{
+            
+            while (self.state != CDAWebSocketClientStateClosed) {
+                
+                self.internalWebSocketClient->poll();
+                self.internalWebSocketClient->dispatch([self](const std::string & message) {
+                    
+                    [self.delegate webSocket:self didRecieveMessage:[OFString stringWithUTF8String:message.c_str()]];
+                });
+            }
+        });
+        
     }
     return self;
 }
@@ -70,9 +88,7 @@
 
 -(CDAWebSocketClientState)state
 {
-    easywsclient::WebSocket::pointer socket = self.internalWebSocketClient;
-    
-    easywsclient::WebSocket::readyStateValues value = socket->getReadyState();
+    easywsclient::WebSocket::readyStateValues value = self.internalWebSocketClient->getReadyState();
     
     switch (value) {
             
@@ -95,6 +111,28 @@
         default:
             break;
     }
+}
+
+#pragma mark - Methods
+
+-(void)sendMessage:(OFString *)message
+{
+    self.internalWebSocketClient->send(message.UTF8String);
+}
+
+-(void)sendDataString:(OFString *)dataString
+{
+    self.internalWebSocketClient->sendBinary(dataString.UTF8String);
+}
+
+-(void)sendPing
+{
+    self.internalWebSocketClient->sendPing();
+}
+
+-(void)close
+{
+    self.internalWebSocketClient->close();
 }
 
 @end
