@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>1DEBB333-9AD1-4D66-A82A-994AC42BCBF4</string>
+	<key>IDESourceControlProjectName</key>
+	<string>CDAWebSocketClient</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>35B3DBC4E22CB0D7214145377C2A2AED79EA6EEC</key>
+		<string>https://github.com/colemancda/easywsclient.git</string>
+		<key>DE94D839634017F1CF371E746F7B22911B5002CC</key>
+		<string>https://github.com/colemancda/CDAWebSocketClient.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>CDAWebSocketClient/CDAWebSocketClient.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>35B3DBC4E22CB0D7214145377C2A2AED79EA6EEC</key>
+		<string>../../..external/easywsclient</string>
+		<key>DE94D839634017F1CF371E746F7B22911B5002CC</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/colemancda/CDAWebSocketClient.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>DE94D839634017F1CF371E746F7B22911B5002CC</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>DE94D839634017F1CF371E746F7B22911B5002CC</string>
+			<key>IDESourceControlWCCName</key>
+			<string>CDAWebSocketClient</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>35B3DBC4E22CB0D7214145377C2A2AED79EA6EEC</string>
+			<key>IDESourceControlWCCName</key>
+			<string>easywsclient</string>
+		</dict>
+	</array>
+</dict>
+</plist>

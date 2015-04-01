@@ -1,0 +1,3 @@
+[submodule "external/easywsclient"]
+	path = external/easywsclient
+	url = https://github.com/colemancda/easywsclient.git
